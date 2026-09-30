@@ -1,0 +1,155 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import RateTable from '../../components/ui/RateTable.astro';
+import rates from '../../data/rates.json';
+import companyInfo from '../../data/companyInfo.json';
+import {
+  TrendingUp,
+  ShieldCheck,
+  CheckCircle2,
+  FileText,
+  HelpCircle,
+  ArrowRight,
+  Store
+} from '@lucide/astro';
+
+const dds = rates.dailyDepositScheme;
+---
+
+<PageLayout
+  title="Daily Deposit Scheme (DDS / Pigmy) | BSL Nidhi Limited"
+  description="Doorstep daily savings scheme for shopkeepers, traders, and daily earners. Save starting at ₹50 per day and earn attractive interest with BSL Nidhi Limited."
+>
+  <!-- Header Banner -->
+  <section class="bg-gradient-to-b from-bsl-darkgreen to-emerald-950 text-white py-14 px-4 sm:px-6 lg:px-8 border-b border-emerald-800">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-900/80 text-emerald-200 border border-emerald-700">
+          <ShieldCheck class="w-3.5 h-3.5 text-bsl-gold" />
+          Doorstep Agent Collection
+        </span>
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-950">
+          Starts at just ₹{dds.minDailyAmount}/day
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-3 tracking-tight">
+        {dds.title}
+      </h1>
+      <p class="text-emerald-100/90 text-base sm:text-lg max-w-3xl leading-relaxed">
+        {dds.shortDescription}
+      </p>
+
+      <div class="flex flex-wrap items-center gap-6 mt-6 pt-4 border-t border-emerald-900/70 text-xs sm:text-sm text-emerald-200">
+        <div>Minimum Daily Amount: <strong class="text-white">₹{dds.minDailyAmount}/day</strong></div>
+        <span>•</span>
+        <div>Collection Mode: <strong class="text-white">Authorized Doorstep Agent</strong></div>
+        <span>•</span>
+        <div>Tenures: <strong class="text-white">{dds.tenure}</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      
+      <!-- Left Content (8 Cols) -->
+      <div class="lg:col-span-8 space-y-10">
+        
+        <!-- Rate Chart -->
+        <section>
+          <h2 class="text-2xl font-bold text-bsl-navy flex items-center gap-2 mb-2">
+            <TrendingUp class="w-6 h-6 text-bsl-green" />
+            Daily Deposit Scheme Interest Rates
+          </h2>
+          <p class="text-sm text-slate-600 mb-4">
+            Earn reliable interest on small daily surplus savings collected right from your business or shop.
+          </p>
+
+          <RateTable
+            slabs={dds.slabs}
+            caption="Daily Deposit Rate Slabs"
+            showSeniorCitizenNotice={true}
+          />
+        </section>
+
+        <!-- Benefits -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+          <h3 class="text-xl font-bold text-bsl-navy">Key Highlights for Traders & Small Businesses</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            {dds.highlights.map((highlight) => (
+              <div class="flex items-start gap-3 text-sm text-slate-700">
+                <CheckCircle2 class="w-5 h-5 text-bsl-green shrink-0 mt-0.5" />
+                <span>{highlight}</span>
+              </div>
+            ))}
+            <div class="flex items-start gap-3 text-sm text-slate-700">
+              <CheckCircle2 class="w-5 h-5 text-bsl-green shrink-0 mt-0.5" />
+              <span>Instant electronic/printed receipts provided by the collector at the time of deposit.</span>
+            </div>
+            <div class="flex items-start gap-3 text-sm text-slate-700">
+              <CheckCircle2 class="w-5 h-5 text-bsl-green shrink-0 mt-0.5" />
+              <span>Protects small business cash flow from unnecessary day-to-day spending.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Terms of Account -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+          <h3 class="text-xl font-bold text-bsl-navy flex items-center gap-2">
+            <FileText class="w-5 h-5 text-bsl-green" />
+            Account Terms & Conditions
+          </h3>
+          <ul class="space-y-2 text-sm text-slate-600 list-disc pl-5">
+            <li>Membership in BSL Nidhi Limited and KYC verification are mandatory.</li>
+            <li>Maturity proceeds are credited directly to the member's savings account upon completion of term.</li>
+            <li>Loan facility is available against active daily deposit accounts.</li>
+            <li>Senior citizens are eligible for 0.50% extra interest on eligible tenures.</li>
+          </ul>
+        </section>
+
+      </div>
+
+      <!-- Right Sidebar (4 Cols) -->
+      <div class="lg:col-span-4 space-y-6">
+        <div class="bg-gradient-to-br from-bsl-darkgreen to-emerald-950 text-white rounded-2xl p-6 shadow-md border border-emerald-800 space-y-4">
+          <h3 class="text-lg font-bold text-white">Request Doorstep Collection</h3>
+          <p class="text-xs text-emerald-200 leading-relaxed">
+            Have our authorized representative visit your shop or office to start your Daily Deposit account.
+          </p>
+          <div class="pt-2 space-y-3">
+            <a
+              href="/contact"
+              class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm text-bsl-darkgreen bg-white hover:bg-emerald-50 transition-colors shadow"
+            >
+              <span>Request Doorstep Agent</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+            <a
+              href={`tel:${companyInfo.phoneRaw}`}
+              class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl font-semibold text-xs text-emerald-100 bg-emerald-900/60 hover:bg-emerald-900 border border-emerald-700/60 transition-colors"
+            >
+              <span>Call Helpline: {companyInfo.phone}</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 space-y-3 shadow-sm">
+          <h4 class="font-bold text-sm text-slate-900 flex items-center gap-2">
+            <HelpCircle class="w-4 h-4 text-bsl-green" />
+            Daily Deposit FAQs
+          </h4>
+          <p class="text-xs text-slate-500">
+            Learn about collection agent verification, transaction alerts, and interest payouts.
+          </p>
+          <a href="/faqs" class="inline-flex items-center gap-1 text-xs font-bold text-bsl-green hover:underline">
+            <span>View All FAQs</span>
+            <ArrowRight class="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</PageLayout>

@@ -1,0 +1,139 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import rates from '../../data/rates.json';
+import companyInfo from '../../data/companyInfo.json';
+import {
+  FileCheck2,
+  ShieldCheck,
+  CheckCircle2,
+  FileText,
+  HelpCircle,
+  ArrowRight,
+  Landmark
+} from '@lucide/astro';
+
+const ol = rates.loans.otherLoans;
+---
+
+<PageLayout
+  title="Other Loan Schemes | Loans on Government Securities | BSL Nidhi Limited"
+  description="Avail credit facilities against National Savings Certificates (NSC), Kisan Vikas Patra (KVP), and Government Securities with BSL Nidhi Limited."
+>
+  <!-- Header Banner -->
+  <section class="bg-gradient-to-b from-slate-900 to-bsl-navy text-white py-14 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-900/80 text-emerald-200 border border-emerald-700">
+          <ShieldCheck class="w-3.5 h-3.5 text-bsl-gold" />
+          Loans on Approved Securities
+        </span>
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-950">
+          Rates {ol.rateDisplay}
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-3 tracking-tight">
+        {ol.title}
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg max-w-3xl leading-relaxed">
+        {ol.shortDescription}
+      </p>
+
+      <div class="flex flex-wrap items-center gap-6 mt-6 pt-4 border-t border-slate-800 text-xs sm:text-sm text-slate-300">
+        <div>Starting Interest: <strong class="text-white">{ol.rateDisplay}</strong></div>
+        <span>•</span>
+        <div>Accepted Collaterals: <strong class="text-white">NSC, KVP, Postal Securities</strong></div>
+        <span>•</span>
+        <div>Processing: <strong class="text-white">Fast & Paperless</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      
+      <!-- Left Content (8 Cols) -->
+      <div class="lg:col-span-8 space-y-10">
+        
+        <!-- Highlights -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+          <h2 class="text-2xl font-bold text-bsl-navy flex items-center gap-2">
+            <Landmark class="w-6 h-6 text-bsl-green" />
+            Credit on Postal & Government Securities
+          </h2>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Don't encash your National Savings Certificates (NSC) or Kisan Vikas Patra (KVP) ahead of maturity. BSL Nidhi Limited offers prompt loans against pledged government savings certificates so you retain maturity appreciation while meeting urgent cash requirements.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            {ol.highlights.map((highlight) => (
+              <div class="flex items-start gap-3 text-sm text-slate-700">
+                <CheckCircle2 class="w-5 h-5 text-bsl-green shrink-0 mt-0.5" />
+                <span>{highlight}</span>
+              </div>
+            ))}
+            <div class="flex items-start gap-3 text-sm text-slate-700">
+              <CheckCircle2 class="w-5 h-5 text-bsl-green shrink-0 mt-0.5" />
+              <span>Prompt lien marking in compliance with applicable statutory regulations.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Terms of Loan -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+          <h3 class="text-xl font-bold text-bsl-navy flex items-center gap-2">
+            <FileText class="w-5 h-5 text-bsl-green" />
+            Terms & Statutory Guidelines
+          </h3>
+          <ul class="space-y-2 text-sm text-slate-600 list-disc pl-5">
+            <li>Available exclusively to registered members of BSL Nidhi Limited.</li>
+            <li>Certificates must be in the name of the applicant with clear, transferable title.</li>
+            <li>Loan tenure cannot exceed the maturity date of the pledged government instrument.</li>
+            <li>All terms regulated in accordance with the Nidhi Rules, 2014.</li>
+          </ul>
+        </section>
+
+      </div>
+
+      <!-- Right Sidebar (4 Cols) -->
+      <div class="lg:col-span-4 space-y-6">
+        <div class="bg-gradient-to-br from-bsl-darkgreen to-emerald-950 text-white rounded-2xl p-6 shadow-md border border-emerald-800 space-y-4">
+          <h3 class="text-lg font-bold text-white">Apply for Loan on Securities</h3>
+          <p class="text-xs text-emerald-200 leading-relaxed">
+            Visit our branch with your original postal/government certificates and KYC documents.
+          </p>
+          <div class="pt-2 space-y-3">
+            <a
+              href="/contact"
+              class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm text-bsl-darkgreen bg-white hover:bg-emerald-50 transition-colors shadow"
+            >
+              <span>Submit Loan Inquiry</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+            <a
+              href={`tel:${companyInfo.phoneRaw}`}
+              class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl font-semibold text-xs text-emerald-100 bg-emerald-900/60 hover:bg-emerald-900 border border-emerald-700/60 transition-colors"
+            >
+              <span>Call Helpline: {companyInfo.phone}</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 space-y-3 shadow-sm">
+          <h4 class="font-bold text-sm text-slate-900 flex items-center gap-2">
+            <HelpCircle class="w-4 h-4 text-bsl-green" />
+            Have Questions?
+          </h4>
+          <p class="text-xs text-slate-500">
+            Check our comprehensive FAQ section for detailed information on interest rates and procedures.
+          </p>
+          <a href="/faqs" class="inline-flex items-center gap-1 text-xs font-bold text-bsl-green hover:underline">
+            <span>View All FAQs</span>
+            <ArrowRight class="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</PageLayout>

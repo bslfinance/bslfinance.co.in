@@ -1,0 +1,150 @@
+---
+import companyInfo from '../../data/companyInfo.json';
+import { ShieldCheck, Phone, Mail, Clock, ArrowRight } from '@lucide/astro';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-bsl-navy text-slate-300 pt-16 pb-8 border-t-4 border-bsl-green">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+      
+      <!-- Column 1: Company Profile & Authority (Span 2) -->
+      <div class="lg:col-span-2 space-y-4">
+        <div class="flex items-center gap-3">
+          <img
+            src="/images/logo.png"
+            alt={companyInfo.name}
+            class="h-12 w-auto brightness-0 invert opacity-95"
+          />
+        </div>
+
+        <p class="text-slate-400 text-sm leading-relaxed pr-4">
+          <strong>BSL Nidhi Limited</strong> is a premier mutual benefit financial institution dedicated to fostering disciplined thrift, savings, and delivering transparent credit facilities to its members.
+        </p>
+      </div>
+
+      <!-- Column 2: Deposit Schemes -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-bold uppercase tracking-wider text-white border-l-2 border-bsl-green pl-2.5">
+          Deposit Schemes
+        </h4>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="/schemes/fixed-deposit" class="hover:text-white hover:translate-x-1 inline-flex items-center gap-1.5 transition-transform text-slate-400">
+              <ArrowRight class="w-3 h-3 text-bsl-green" /> Fixed Deposit (FD)
+            </a>
+          </li>
+          <li>
+            <a href="/schemes/recurring-deposit" class="hover:text-white hover:translate-x-1 inline-flex items-center gap-1.5 transition-transform text-slate-400">
+              <ArrowRight class="w-3 h-3 text-bsl-green" /> Recurring Deposit (RD)
+            </a>
+          </li>
+          <li>
+            <a href="/schemes/monthly-income" class="hover:text-white hover:translate-x-1 inline-flex items-center gap-1.5 transition-transform text-slate-400">
+              <ArrowRight class="w-3 h-3 text-bsl-green" /> Monthly Income (MIS)
+            </a>
+          </li>
+          <li>
+            <a href="/schemes/daily-deposit" class="hover:text-white hover:translate-x-1 inline-flex items-center gap-1.5 transition-transform text-slate-400">
+              <ArrowRight class="w-3 h-3 text-bsl-green" /> Daily Deposit (DDS)
+            </a>
+          </li>
+          <li>
+            <a href="/schemes/savings-account" class="hover:text-white hover:translate-x-1 inline-flex items-center gap-1.5 transition-transform text-slate-400">
+              <ArrowRight class="w-3 h-3 text-bsl-green" /> Savings Account
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Loan Products -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-bold uppercase tracking-wider text-white border-l-2 border-bsl-gold pl-2.5">
+          Loan Products
+        </h4>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="/loans/gold-loan" class="hover:text-white hover:translate-x-1 inline-flex items-center gap-1.5 transition-transform text-slate-400">
+              <ArrowRight class="w-3 h-3 text-bsl-gold" /> Loan Against Gold
+            </a>
+          </li>
+          <li>
+            <a href="/loans/loan-against-deposit" class="hover:text-white hover:translate-x-1 inline-flex items-center gap-1.5 transition-transform text-slate-400">
+              <ArrowRight class="w-3 h-3 text-bsl-gold" /> Loan Against Deposit
+            </a>
+          </li>
+          <li>
+            <a href="/loans/loan-against-property" class="hover:text-white hover:translate-x-1 inline-flex items-center gap-1.5 transition-transform text-slate-400">
+              <ArrowRight class="w-3 h-3 text-bsl-gold" /> Loan Against Property
+            </a>
+          </li>
+          <li>
+            <a href="/loans/other-loans" class="hover:text-white hover:translate-x-1 inline-flex items-center gap-1.5 transition-transform text-slate-400">
+              <ArrowRight class="w-3 h-3 text-bsl-gold" /> Other Loans (Securities)
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Quick Contact & Member Support -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-bold uppercase tracking-wider text-white border-l-2 border-emerald-400 pl-2.5">
+          Official Support
+        </h4>
+        <div class="space-y-2.5 text-sm">
+          <a
+            href={`tel:${companyInfo.phoneRaw}`}
+            class="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
+          >
+            <Phone class="w-4 h-4 text-bsl-green shrink-0" />
+            <span>{companyInfo.phone}</span>
+          </a>
+          <a
+            href={`mailto:${companyInfo.email}`}
+            class="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
+          >
+            <Mail class="w-4 h-4 text-bsl-green shrink-0" />
+            <span class="break-all">{companyInfo.email}</span>
+          </a>
+          <div class="flex items-center gap-2 text-slate-400 text-xs pt-1">
+            <Clock class="w-4 h-4 text-bsl-gold shrink-0" />
+            <span>{companyInfo.workingHours}</span>
+          </div>
+          
+          <div class="pt-3">
+            <a
+              href={companyInfo.social.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-950 hover:bg-emerald-900 border border-emerald-700/60 text-xs font-semibold text-emerald-200 transition-colors"
+            >
+              <span>Chat on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar: Copyright & Compliance Links -->
+    <div class="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+      <p>
+        &copy; {currentYear} <strong>{companyInfo.name}</strong>. All Rights Reserved.
+      </p>
+
+      <div class="flex items-center flex-wrap justify-center gap-x-4 gap-y-2">
+        <a href="/terms-and-conditions" class="hover:text-white transition-colors">Terms & Conditions</a>
+        <span>•</span>
+        <a href="/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a>
+        <span>•</span>
+        <a href="/website-terms" class="hover:text-white transition-colors">Website Usage</a>
+        <span>•</span>
+        <a href="/about/legal" class="hover:text-white transition-colors">Legal Certification</a>
+        <span>•</span>
+        <a href="/faqs" class="hover:text-white transition-colors">FAQs</a>
+      </div>
+    </div>
+
+  </div>
+</footer>

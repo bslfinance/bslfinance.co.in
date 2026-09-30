@@ -1,0 +1,202 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import RateTable from '../../components/ui/RateTable.astro';
+import rates from '../../data/rates.json';
+import companyInfo from '../../data/companyInfo.json';
+import {
+  TrendingUp,
+  ShieldCheck,
+  CheckCircle2,
+  FileText,
+  HelpCircle,
+  ArrowRight,
+  Calculator,
+  Lock
+} from '@lucide/astro';
+
+const fd = rates.fixedDeposit;
+const highestRate = fd.slabs
+  .filter(s => s.enabled)
+  .reduce((max, s) => s.rate > max ? s.rate : max, 0);
+---
+
+<PageLayout
+  title="Fixed Deposit Scheme (FD) | Up to 12.00% p.a. | BSL Nidhi Limited"
+  description="Invest in BSL Nidhi Limited Fixed Deposits with high compounding interest rates up to 12.00% p.a., flexible tenures from 1 to 5 years, and loan facilities up to 90%."
+>
+  <!-- Scheme Header Banner -->
+  <section class="bg-gradient-to-b from-bsl-darkgreen to-emerald-950 text-white py-14 px-4 sm:px-6 lg:px-8 border-b border-emerald-800">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-900/80 text-emerald-200 border border-emerald-700">
+          <ShieldCheck class="w-3.5 h-3.5 text-bsl-gold" />
+          Nidhi Rules, 2014 Compliant
+        </span>
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-950">
+          Earn Up to {highestRate.toFixed(2)}% p.a.
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-3 tracking-tight">
+        {fd.title}
+      </h1>
+      <p class="text-emerald-100/90 text-base sm:text-lg max-w-3xl leading-relaxed">
+        {fd.shortDescription} Maximize your savings with quarterly compounding interest, safe principal return, and special privileges for senior citizens.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-6 mt-6 pt-4 border-t border-emerald-900/70 text-xs sm:text-sm text-emerald-200">
+        <div>Minimum Deposit: <strong class="text-white">₹{fd.minAmount.toLocaleString('en-IN')}</strong></div>
+        <span>•</span>
+        <div>Interest Compounding: <strong class="text-white">{fd.compounding}</strong></div>
+        <span>•</span>
+        <div>Tenures: <strong class="text-white">12 to 60 Months</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Body -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      
+      <!-- Left Content (8 Cols) -->
+      <div class="lg:col-span-8 space-y-10">
+        
+        <!-- Live Dynamic Rate Table -->
+        <section>
+          <div class="flex items-center justify-between gap-4 mb-2">
+            <h2 class="text-2xl font-bold text-bsl-navy flex items-center gap-2">
+              <TrendingUp class="w-6 h-6 text-bsl-green" />
+              Fixed Deposit Interest Rate Chart
+            </h2>
+          </div>
+          <p class="text-sm text-slate-600 mb-4">
+            Rates are reviewed and maintained in accordance with statutory provisions.
+          </p>
+
+          <!-- Dynamic Rate Table Component -->
+          <RateTable
+            slabs={fd.slabs}
+            caption="Fixed Deposit Rate Chart (Quarterly Compounding)"
+            showSeniorCitizenNotice={true}
+          />
+        </section>
+
+        <!-- Scheme Key Highlights -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+          <h3 class="text-xl font-bold text-bsl-navy">Key Benefits & Features</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            {fd.highlights.map((highlight) => (
+              <div class="flex items-start gap-3 text-sm text-slate-700">
+                <CheckCircle2 class="w-5 h-5 text-bsl-green shrink-0 mt-0.5" />
+                <span>{highlight}</span>
+              </div>
+            ))}
+            <div class="flex items-start gap-3 text-sm text-slate-700">
+              <CheckCircle2 class="w-5 h-5 text-bsl-green shrink-0 mt-0.5" />
+              <span>Senior Citizens (60+) receive 0.50% extra interest on eligible tenures.</span>
+            </div>
+            <div class="flex items-start gap-3 text-sm text-slate-700">
+              <CheckCircle2 class="w-5 h-5 text-bsl-green shrink-0 mt-0.5" />
+              <span>Physical FD Certificate with security seal and official registration details.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Eligibility & Documentation Required -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+          <h3 class="text-xl font-bold text-bsl-navy flex items-center gap-2">
+            <FileText class="w-5 h-5 text-bsl-green" />
+            Eligibility & Required Documents
+          </h3>
+          <p class="text-sm text-slate-600">
+            In compliance with Nidhi Rules, 2014, deposits are accepted only from registered shareholder members upon completing Know Your Customer (KYC) documentation.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <h4 class="font-bold text-sm text-slate-900 mb-2">Eligibility Criteria</h4>
+              <ul class="text-xs sm:text-sm text-slate-600 space-y-1.5 list-disc pl-4">
+                <li>Individual member of BSL Nidhi Limited</li>
+                <li>Indian citizen aged 18 years or above</li>
+                <li>Minors eligible through natural/legal guardian</li>
+                <li>Joint account facility available (up to 2 adult members)</li>
+              </ul>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <h4 class="font-bold text-sm text-slate-900 mb-2">Required KYC Documents</h4>
+              <ul class="text-xs sm:text-sm text-slate-600 space-y-1.5 list-disc pl-4">
+                <li>Self-attested PAN Card copy (mandatory)</li>
+                <li>Aadhaar Card / Voter ID / Passport (Identity Proof)</li>
+                <li>Recent utility bill / Aadhaar (Address Proof)</li>
+                <li>2 passport-sized color photographs</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Right Sticky Sidebar (4 Cols) -->
+      <div class="lg:col-span-4 space-y-6">
+        
+        <!-- Quick Application Action Card -->
+        <div class="bg-gradient-to-br from-bsl-darkgreen to-emerald-950 text-white rounded-2xl p-6 shadow-md border border-emerald-800 space-y-4">
+          <h3 class="text-lg font-bold text-white">Start Your Fixed Deposit</h3>
+          <p class="text-xs text-emerald-200 leading-relaxed">
+            Open your Fixed Deposit account at our branch or consult our representative for doorstep assistance.
+          </p>
+          
+          <div class="pt-2 space-y-3">
+            <a
+              href="/contact"
+              class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm text-bsl-darkgreen bg-white hover:bg-emerald-50 transition-colors shadow"
+            >
+              <span>Submit FD Inquiry</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+
+            <a
+              href={`tel:${companyInfo.phoneRaw}`}
+              class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl font-semibold text-xs text-emerald-100 bg-emerald-900/60 hover:bg-emerald-900 border border-emerald-700/60 transition-colors"
+            >
+              <span>Call Helpline: {companyInfo.phone}</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Loan Against FD Feature Box -->
+        <div class="bg-amber-50/70 border border-amber-200 rounded-2xl p-6 space-y-2 text-xs text-amber-900">
+          <h4 class="font-bold text-sm text-amber-950 flex items-center gap-1.5">
+            <ShieldCheck class="w-4 h-4 text-amber-700" />
+            Instant Loan Against FD
+          </h4>
+          <p class="leading-relaxed">
+            Need emergency funds? You can avail a loan up to <strong>90% of your deposit principal</strong> without premature withdrawal or losing your accumulated interest.
+          </p>
+          <a href="/loans/loan-against-deposit" class="inline-block font-bold text-amber-800 hover:underline pt-1">
+            Learn about Loan Against Deposit &rarr;
+          </a>
+        </div>
+
+        <!-- FAQs Teaser -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 space-y-3 shadow-sm">
+          <h4 class="font-bold text-sm text-slate-900 flex items-center gap-2">
+            <HelpCircle class="w-4 h-4 text-bsl-green" />
+            Frequently Asked Questions
+          </h4>
+          <p class="text-xs text-slate-500">
+            Have questions about premature encashment, interest compounding frequency, or nomination rules?
+          </p>
+          <a
+            href="/faqs"
+            class="inline-flex items-center gap-1 text-xs font-bold text-bsl-green hover:underline"
+          >
+            <span>Read All Deposit FAQs</span>
+            <ArrowRight class="w-3.5 h-3.5" />
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</PageLayout>

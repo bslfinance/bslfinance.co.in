@@ -1,0 +1,130 @@
+---
+import LegalDocumentLayout from '../../components/legal/LegalDocumentLayout.astro';
+import companyInfo from '../../data/companyInfo.json';
+import { Target, Compass, ShieldCheck, HeartHandshake, Award, Users, ArrowRight } from '@lucide/astro';
+---
+
+<LegalDocumentLayout
+  title="Company Profile"
+  subtitle="Our origins, governing philosophy, mutual benefit objectives, mission, and long-term vision."
+  currentSlug="company-profile"
+>
+  <div class="space-y-10 text-slate-700 leading-relaxed text-sm sm:text-base">
+    
+    <!-- Hero / Profile Intro -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-bsl-navy flex items-center gap-2 border-b pb-3 border-slate-100">
+        <Users class="w-6 h-6 text-bsl-green" />
+        About BSL Nidhi Limited
+      </h2>
+      <p class="text-base sm:text-lg text-slate-800 font-medium">
+        BSL Nidhi Limited is a Nidhi company incorporated under the Companies Act 2013.
+      </p>
+      <p>
+        The main objective of company is to cultivate the habit of thrift and savings among its members & receiving deposits from, and lending to, members only, for their mutual benefit.
+      </p>
+      <p>
+        The Company has started its business with great enthusiasm and dedication which crafts the company into one of the leading Nidhi Companies in India. We are committed to the financial empowerment of our members by delivering services in the most transparent, ethical, and efficient manner.
+      </p>
+      <p>
+        We follow transparent, fair, ethical and legally tenable practices while conducting business. Our products are designed to deliver maximum value, offering attractive rates of interest along with other member benefits.
+      </p>
+    </section>
+
+    <!-- Mission & Vision Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+      
+      <!-- Mission -->
+      <div class="bg-gradient-to-br from-emerald-50 to-white rounded-2xl p-6 sm:p-8 border border-emerald-200/80 shadow-sm relative overflow-hidden">
+        <div class="w-12 h-12 rounded-xl bg-bsl-green text-white flex items-center justify-center mb-4 shadow">
+          <Target class="w-6 h-6 text-bsl-gold" />
+        </div>
+        <h3 class="text-xl font-bold text-bsl-darkgreen mb-3">Our Mission</h3>
+        <p class="text-slate-700 leading-relaxed text-sm">
+          Our mission is to offer high-quality financial services which meet the evolving needs of our members and service areas; and to earn the enduring trust and confidence of all stakeholders, exceeding their expectations and establishing the Company as a premier financial choice.
+        </p>
+      </div>
+
+      <!-- Vision -->
+      <div class="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm relative overflow-hidden">
+        <div class="w-12 h-12 rounded-xl bg-bsl-navy text-white flex items-center justify-center mb-4 shadow">
+          <Compass class="w-6 h-6 text-bsl-gold" />
+        </div>
+        <h3 class="text-xl font-bold text-bsl-navy mb-3">Our Vision</h3>
+        <p class="text-slate-700 leading-relaxed text-sm">
+          BSL Nidhi Limited is determined to accomplish its vision of becoming a major regional financial institution. The company's strategic framework is built upon four timeless pillars: integrity & honesty, meaningful relationships, dedicated hard work, and dynamic adaptability.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- The 4 Strategic Pillars -->
+    <section class="space-y-4 pt-4 border-t border-slate-100">
+      <h3 class="text-xl font-bold text-bsl-navy flex items-center gap-2">
+        <Award class="w-5 h-5 text-bsl-green" />
+        The Four Pillars of BSL Nidhi
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+        
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+          <div class="font-bold text-slate-900 mb-1 flex items-center gap-1.5 text-sm">
+            <ShieldCheck class="w-4 h-4 text-bsl-green" />
+            Integrity & Honesty
+          </div>
+          <p class="text-xs text-slate-600">
+            Uncompromising compliance with statutory guidelines and ethical dealings across all member transactions.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+          <div class="font-bold text-slate-900 mb-1 flex items-center gap-1.5 text-sm">
+            <HeartHandshake class="w-4 h-4 text-bsl-green" />
+            Meaningful Relationships
+          </div>
+          <p class="text-xs text-slate-600">
+            Treating every member as an esteemed partner in mutual growth, financial security, and prosperity.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+          <div class="font-bold text-slate-900 mb-1 flex items-center gap-1.5 text-sm">
+            <Target class="w-4 h-4 text-bsl-green" />
+            Dedicated Hard Work
+          </div>
+          <p class="text-xs text-slate-600">
+            Persistent effort to ensure prompt doorstep service, accurate record-keeping, and reliable returns.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
+          <div class="font-bold text-slate-900 mb-1 flex items-center gap-1.5 text-sm">
+            <Compass class="w-4 h-4 text-bsl-green" />
+            Dynamic Adaptability
+          </div>
+          <p class="text-xs text-slate-600">
+            Embracing modern technology, digital bookkeeping, and responsive financial products for modern India.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Connect / Inquire CTA -->
+    <div class="rounded-2xl bg-bsl-green text-white p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm mt-8">
+      <div class="space-y-1 text-center sm:text-left">
+        <h4 class="text-lg font-bold">Have questions or need additional information?</h4>
+        <p class="text-emerald-100 text-xs sm:text-sm">
+          Contact us via email, phone, or visit our branch office during working hours.
+        </p>
+      </div>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-white text-bsl-green hover:bg-emerald-50 transition-colors shrink-0 shadow"
+      >
+        <span>Get in Touch</span>
+        <ArrowRight class="w-4 h-4" />
+      </a>
+    </div>
+
+  </div>
+</LegalDocumentLayout>

@@ -1,0 +1,332 @@
+{
+  "currency": "INR",
+  "currencySymbol": "₹",
+  "lastUpdated": "2026-09-28",
+  "regulatoryNotice": "Interest rates are governed by statutory regulations and Nidhi Rules, 2014. Deposits and loans are exclusively available to registered members.",
+  "fixedDeposit": {
+    "title": "Fixed Deposit Scheme",
+    "slug": "fixed-deposit",
+    "shortDescription": "Lump-sum investment with quarterly compounding returns and flexible tenures.",
+    "minAmount": 1000,
+    "compounding": "Quarterly Compounded",
+    "seniorCitizenBonus": 0.50,
+    "slabs": [
+      {
+        "id": "fd-12m",
+        "tenure": "Up to 12 Months",
+        "tenureMonths": 12,
+        "rate": 9.00,
+        "rateDisplay": "9.00% p.a.",
+        "enabled": true,
+        "badge": null
+      },
+      {
+        "id": "fd-24m",
+        "tenure": "13 Months – Up to 24 Months",
+        "tenureMonths": 24,
+        "rate": 9.75,
+        "rateDisplay": "9.75% p.a.",
+        "enabled": true,
+        "badge": null
+      },
+      {
+        "id": "fd-36m",
+        "tenure": "25 Months – Up to 36 Months",
+        "tenureMonths": 36,
+        "rate": 10.50,
+        "rateDisplay": "10.50% p.a.",
+        "enabled": true,
+        "badge": "Popular"
+      },
+      {
+        "id": "fd-48m",
+        "tenure": "37 Months – Up to 48 Months",
+        "tenureMonths": 48,
+        "rate": 11.25,
+        "rateDisplay": "11.25% p.a.",
+        "enabled": true,
+        "badge": null
+      },
+      {
+        "id": "fd-60m",
+        "tenure": "49 Months – Up to 60 Months",
+        "tenureMonths": 60,
+        "rate": 12.00,
+        "rateDisplay": "12.00% p.a.",
+        "enabled": true,
+        "badge": "Highest Return"
+      }
+    ],
+    "highlights": [
+      "High yield returns up to 12.00% per annum",
+      "Loan against FD facility available up to 90% of deposit value",
+      "Nomination facility available and recommended",
+      "Quarterly compounding ensures maximum maturity growth"
+    ]
+  },
+  "recurringDeposit": {
+    "title": "Recurring Deposit Scheme",
+    "slug": "recurring-deposit",
+    "shortDescription": "Systematic monthly disciplined savings plan that matures with high accumulated interest.",
+    "minMonthlyAmount": 500,
+    "compounding": "Quarterly Compounded",
+    "slabs": [
+      {
+        "id": "rd-12m",
+        "tenure": "Up to 12 Months",
+        "tenureMonths": 12,
+        "rate": 7.00,
+        "rateDisplay": "7.00% p.a.",
+        "enabled": true,
+        "badge": null
+      },
+      {
+        "id": "rd-24m",
+        "tenure": "13 Months – Up to 24 Months",
+        "tenureMonths": 24,
+        "rate": 8.25,
+        "rateDisplay": "8.25% p.a.",
+        "enabled": true,
+        "badge": null
+      },
+      {
+        "id": "rd-36m",
+        "tenure": "25 Months – Up to 36 Months",
+        "tenureMonths": 36,
+        "rate": 9.25,
+        "rateDisplay": "9.25% p.a.",
+        "enabled": true,
+        "badge": "Popular"
+      },
+      {
+        "id": "rd-48m",
+        "tenure": "37 Months – Up to 48 Months",
+        "tenureMonths": 48,
+        "rate": 10.00,
+        "rateDisplay": "10.00% p.a.",
+        "enabled": true,
+        "badge": null
+      },
+      {
+        "id": "rd-60m",
+        "tenure": "49 Months – Up to 60 Months",
+        "tenureMonths": 60,
+        "rate": 10.50,
+        "rateDisplay": "10.50% p.a.",
+        "enabled": true,
+        "badge": "Highest Return"
+      }
+    ],
+    "highlights": [
+      "Cultivates systematic monthly savings discipline",
+      "Starting from as low as ₹500 per month",
+      "Loans available against active regular RD accounts",
+      "Guaranteed returns credited upon maturity"
+    ]
+  },
+  "monthlyIncomeScheme": {
+    "title": "Monthly Income Scheme (MIS)",
+    "slug": "monthly-income",
+    "shortDescription": "Ideal for retirees and passive income seekers looking for guaranteed monthly interest cash flow.",
+    "minAmount": 50000,
+    "payoutFrequency": "Monthly credited to Savings Account",
+    "slabs": [
+      {
+        "id": "mis-12m",
+        "tenure": "Up to 12 Months",
+        "tenureMonths": 12,
+        "rate": 7.25,
+        "rateDisplay": "7.25% p.a.",
+        "enabled": true,
+        "badge": null
+      },
+      {
+        "id": "mis-24m",
+        "tenure": "13 Months – Up to 24 Months",
+        "tenureMonths": 24,
+        "rate": 8.75,
+        "rateDisplay": "8.75% p.a.",
+        "enabled": true,
+        "badge": null
+      },
+      {
+        "id": "mis-36m",
+        "tenure": "25 Months – Up to 36 Months",
+        "tenureMonths": 36,
+        "rate": 9.25,
+        "rateDisplay": "9.25% p.a.",
+        "enabled": true,
+        "badge": null
+      },
+      {
+        "id": "mis-48m",
+        "tenure": "37 Months – Up to 48 Months",
+        "tenureMonths": 48,
+        "rate": 10.25,
+        "rateDisplay": "10.25% p.a.",
+        "enabled": true,
+        "badge": null
+      },
+      {
+        "id": "mis-60m",
+        "tenure": "49 Months – Up to 60 Months",
+        "tenureMonths": 60,
+        "rate": 11.00,
+        "rateDisplay": "11.00% p.a.",
+        "enabled": true,
+        "badge": "Highest Return"
+      }
+    ],
+    "highlights": [
+      "Predictable monthly earnings credited straight into your account",
+      "100% Principal amount returned securely at end of term",
+      "Great for senior citizens and household budget support",
+      "Loan against deposit facility accessible anytime"
+    ]
+  },
+  "dailyDepositScheme": {
+    "title": "Daily Deposit Scheme (DDS / Pigmy)",
+    "slug": "daily-deposit",
+    "shortDescription": "Small daily doorstep savings collection designed specifically for shopkeepers, traders, and daily earners.",
+    "minDailyAmount": 50,
+    "slabs": [
+      {
+        "id": "dds-360d",
+        "tenure": "Up to 360 Days (~1 Year)",
+        "tenureMonths": 12,
+        "rate": 5.25,
+        "rateDisplay": "5.25% p.a.",
+        "enabled": true,
+        "badge": null
+      },
+      {
+        "id": "dds-540d",
+        "tenure": "361 Days – Up to 540 Days",
+        "tenureMonths": 18,
+        "rate": 6.25,
+        "rateDisplay": "6.25% p.a.",
+        "enabled": true,
+        "badge": null
+      },
+      {
+        "id": "dds-720d",
+        "tenure": "541 Days – Up to 720 Days (~2 Years)",
+        "tenureMonths": 24,
+        "rate": 7.25,
+        "rateDisplay": "7.25% p.a.",
+        "enabled": true,
+        "badge": "Highest Return"
+      }
+    ],
+    "highlights": [
+      "Authorized agent doorstep collection with physical/digital receipts",
+      "Save small amounts daily (starts at ₹50/day)",
+      "Senior citizens receive 0.50% extra interest on eligible tenures",
+      "Emergency loan availability after 6 months of regular deposits"
+    ]
+  },
+  "savingsAccount": {
+    "title": "Savings Account",
+    "slug": "savings-account",
+    "shortDescription": "Flexible deposit account with competitive annual interest and hassle-free liquidity.",
+    "categories": [
+      {
+        "id": "sa-gen",
+        "category": "General Account Holders",
+        "rate": 5.00,
+        "rateDisplay": "5.00% p.a.",
+        "minBalance": 1000,
+        "enabled": true
+      },
+      {
+        "id": "sa-sr",
+        "category": "Senior Citizen Account",
+        "rate": 5.50,
+        "rateDisplay": "5.50% p.a.",
+        "minBalance": 500,
+        "enabled": true
+      },
+      {
+        "id": "sa-women",
+        "category": "Women's Savings Account",
+        "rate": 5.25,
+        "rateDisplay": "5.25% p.a.",
+        "minBalance": 500,
+        "enabled": true
+      }
+    ],
+    "highlights": [
+      "Higher returns (5.00% to 5.50% p.a.) compared to regular commercial banks",
+      "Passbook facility and instant transaction alerts",
+      "Interest calculated on daily product balance and credited half-yearly",
+      "Zero hidden account maintenance charges"
+    ]
+  },
+  "loans": {
+    "goldLoan": {
+      "title": "Loan Against Gold",
+      "slug": "gold-loan",
+      "shortDescription": "Instant credit against gold ornaments with safe bank-grade vault custody and zero hidden penalties.",
+      "startingRate": 12.00,
+      "rateDisplay": "From 12.00% p.a.",
+      "maxLtv": "Up to 75% of market gold value",
+      "tenure": "Up to 12 Months (Renewable)",
+      "processingTime": "Within 30 minutes",
+      "enabled": true,
+      "badge": "Instant Approval",
+      "highlights": [
+        "Immediate disbursal with minimal documentation",
+        "Ornaments insured and stored in bank-grade safe custody",
+        "Flexible repayment options (monthly interest or bullet repayment)",
+        "Zero prepayment or pre-closure penalty"
+      ]
+    },
+    "loanAgainstDeposit": {
+      "title": "Loan Against Deposit",
+      "slug": "loan-against-deposit",
+      "shortDescription": "Immediate liquidity against your FD or RD without breaking your investment or losing interest.",
+      "marginOverDeposit": 2.00,
+      "rateDisplay": "Deposit Rate + 2.00%",
+      "maxAdvance": "Up to 90% of deposit principal",
+      "processingTime": "Same Day Disbursal",
+      "enabled": true,
+      "badge": "No Extra CIBIL Needed",
+      "highlights": [
+        "Avail up to 90% of your Fixed or Recurring Deposit value",
+        "Your original deposit keeps accumulating interest normally",
+        "Zero CIBIL requirement; secured by your own deposit",
+        "Simple, single-page application procedure"
+      ]
+    },
+    "loanAgainstProperty": {
+      "title": "Loan Against Property",
+      "slug": "loan-against-property",
+      "shortDescription": "Leverage residential or commercial real estate equity for business expansion or personal goals.",
+      "startingRate": 14.00,
+      "rateDisplay": "From 14.00% p.a.",
+      "maxTenure": "Up to 60 Months",
+      "enabled": true,
+      "badge": "Higher Loan Amounts",
+      "highlights": [
+        "Substantial loan quantum for business growth or personal needs",
+        "Transparent valuation and prompt legal verification",
+        "Competitive reducing balance interest rates",
+        "Structured EMI plans to fit your monthly cash flow"
+      ]
+    },
+    "otherLoans": {
+      "title": "Other Loan Schemes",
+      "slug": "other-loans",
+      "shortDescription": "Credit facilities against Government Securities, National Savings Certificates (NSC), and Kisan Vikas Patra (KVP).",
+      "startingRate": 13.00,
+      "rateDisplay": "From 13.00% p.a.",
+      "enabled": true,
+      "badge": "Government Securities",
+      "highlights": [
+        "Pledge NSC, KVP, or approved postal securities",
+        "Retain underlying maturity gains of the securities",
+        "Convenient repayment schedules tailored to members"
+      ]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import TopBar from '../components/common/TopBar.astro';
+import Header from '../components/common/Header.astro';
+import Footer from '../components/common/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalUrl?: string;
+}
+
+const props = Astro.props;
+---
+
+<BaseLayout {...props}>
+  <TopBar />
+  <Header />
+  <main class="flex-grow">
+    <slot />
+  </main>
+  <Footer />
+</BaseLayout>

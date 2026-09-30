@@ -1,0 +1,41 @@
+{
+  "mainNav": [
+    { "label": "Home", "href": "/" },
+    {
+      "label": "Deposit Schemes",
+      "href": "/schemes/fixed-deposit",
+      "children": [
+        { "label": "Fixed Deposit Scheme", "href": "/schemes/fixed-deposit", "badge": "Up to 12.00%" },
+        { "label": "Recurring Deposit Scheme", "href": "/schemes/recurring-deposit" },
+        { "label": "Daily Deposit Scheme (DDS)", "href": "/schemes/daily-deposit" },
+        { "label": "Monthly Income Scheme (MIS)", "href": "/schemes/monthly-income" },
+        { "label": "Savings Account", "href": "/schemes/savings-account" }
+      ]
+    },
+    {
+      "label": "Loan Schemes",
+      "href": "/loans/gold-loan",
+      "children": [
+        { "label": "Loan Against Gold", "href": "/loans/gold-loan", "badge": "Instant" },
+        { "label": "Loan Against Deposit", "href": "/loans/loan-against-deposit" },
+        { "label": "Loan Against Property", "href": "/loans/loan-against-property" },
+        { "label": "Other Loans (NSC/Securities)", "href": "/loans/other-loans" }
+      ]
+    },
+    {
+      "label": "About Us",
+      "href": "/about/company-profile",
+      "children": [
+        { "label": "Company Profile", "href": "/about/company-profile" },
+        { "label": "Legal & Certifications", "href": "/about/legal" },
+        { "label": "Frequently Asked Questions", "href": "/faqs" },
+        { "label": "Terms & Conditions", "href": "/terms-and-conditions" },
+        { "label": "Privacy Policy", "href": "/privacy-policy" },
+        { "label": "Website Usage Terms", "href": "/website-terms" }
+      ]
+    },
+    { "label": "Careers", "href": "/careers" },
+    { "label": "Contact Us", "href": "/contact" }
+  ],
+  "memberLoginUrl": "https://online.bslfinance.in"
+}

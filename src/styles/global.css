@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bsl-green: #0B5E34;
+  --color-bsl-green-light: #0E7B41;
+  --color-bsl-darkgreen: #063D22;
+  --color-bsl-navy: #0F172A;
+  --color-bsl-navy-muted: #1E293B;
+  --color-bsl-gold: #C89D35;
+  --color-bsl-gold-light: #FDF8E8;
+  --color-bsl-porcelain: #F8FAFC;
+  --color-bsl-mint: #10B981;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Base custom styles */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--color-bsl-porcelain);
+  color: var(--color-bsl-navy);
+}
+
+::selection {
+  background-color: #0B5E34;
+  color: #ffffff;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.glass-panel-dark {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom subtle shadows */
+.shadow-soft {
+  box-shadow: 0 4px 20px -2px rgba(11, 94, 52, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-card-hover {
+  box-shadow: 0 12px 30px -4px rgba(11, 94, 52, 0.14), 0 4px 10px -2px rgba(0, 0, 0, 0.06);
+}

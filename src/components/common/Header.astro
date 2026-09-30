@@ -1,0 +1,212 @@
+---
+import navigation from '../../data/navigation.json';
+import companyInfo from '../../data/companyInfo.json';
+import { ChevronDown, Lock, Menu, X } from '@lucide/astro';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 glass-panel bg-white/95 shadow-sm border-b border-slate-200/80 transition-all duration-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      
+      <!-- Brand Logo -->
+      <a href="/" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-bsl-green rounded-lg p-1">
+        <img
+          src="/images/logo.png"
+          alt={companyInfo.name}
+          class="h-12 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+        />
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Main Navigation">
+        {navigation.mainNav.map((item) => {
+          const hasChildren = item.children && item.children.length > 0;
+          const isActive = currentPath === item.href || (item.children && item.children.some(child => currentPath === child.href));
+
+          if (!hasChildren) {
+            return (
+              <a
+                href={item.href}
+                class={`px-3 py-2 text-sm font-semibold rounded-md transition-colors ${
+                  isActive
+                    ? 'text-bsl-green bg-emerald-50 font-bold'
+                    : 'text-slate-700 hover:text-bsl-green hover:bg-slate-50'
+                }`}
+              >
+                {item.label}
+              </a>
+            );
+          }
+
+          return (
+            <div class="relative group">
+              <button
+                type="button"
+                class={`inline-flex items-center gap-1 px-3 py-2 text-sm font-semibold rounded-md transition-colors ${
+                  isActive
+                    ? 'text-bsl-green bg-emerald-50'
+                    : 'text-slate-700 group-hover:text-bsl-green group-hover:bg-slate-50'
+                }`}
+                aria-expanded="false"
+              >
+                <span>{item.label}</span>
+                <ChevronDown class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180 text-slate-400 group-hover:text-bsl-green" />
+              </button>
+
+              <!-- Dropdown Menu -->
+              <div class="absolute left-0 top-full pt-2 w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                <div class="bg-white rounded-xl shadow-xl border border-slate-100 p-2 space-y-1">
+                  {item.children.map((child) => {
+                    const isChildActive = currentPath === child.href;
+                    return (
+                      <a
+                        href={child.href}
+                        class={`flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm transition-all ${
+                          isChildActive
+                            ? 'bg-bsl-green text-white font-semibold shadow-sm'
+                            : 'text-slate-700 hover:bg-emerald-50 hover:text-bsl-green'
+                        }`}
+                      >
+                        <span>{child.label}</span>
+                        {child.badge && (
+                          <span class={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full ${
+                            isChildActive
+                              ? 'bg-white/20 text-white'
+                              : 'bg-amber-100 text-amber-800'
+                          }`}>
+                            {child.badge}
+                          </span>
+                        )}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </nav>
+
+      <!-- Right Actions: Member Login & Mobile Trigger -->
+      <div class="flex items-center gap-3">
+        <!-- Member Login CTA -->
+        <a
+          href={companyInfo.memberPortalUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm text-white bg-bsl-green hover:bg-bsl-darkgreen shadow-sm hover:shadow-md transition-all active:scale-[0.98] border border-emerald-700/50"
+          title="Sign in to BSL Online Member Banking Portal"
+        >
+          <Lock class="w-4 h-4 text-bsl-gold" />
+          <span>Member Login</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button
+          type="button"
+          id="mobile-menu-btn"
+          class="lg:hidden p-2.5 rounded-lg text-slate-700 hover:text-bsl-green hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-bsl-green"
+          aria-label="Toggle Mobile Menu"
+          aria-expanded="false"
+        >
+          <Menu id="menu-icon-open" class="w-6 h-6" />
+          <X id="menu-icon-close" class="w-6 h-6 hidden" />
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer" class="lg:hidden hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 max-h-[85vh] overflow-y-auto">
+    <div class="space-y-1">
+      {navigation.mainNav.map((item) => {
+        const hasChildren = item.children && item.children.length > 0;
+        const isActive = currentPath === item.href;
+
+        if (!hasChildren) {
+          return (
+            <a
+              href={item.href}
+              class={`block px-3 py-2.5 rounded-lg text-base font-medium ${
+                isActive
+                  ? 'bg-emerald-50 text-bsl-green font-bold'
+                  : 'text-slate-800 hover:bg-slate-50 hover:text-bsl-green'
+              }`}
+            >
+              {item.label}
+            </a>
+          );
+        }
+
+        return (
+          <div class="pt-2 pb-1">
+            <div class="px-3 text-xs font-bold text-slate-400 uppercase tracking-wider">
+              {item.label}
+            </div>
+            <div class="mt-1 space-y-1 pl-2">
+              {item.children.map((child) => (
+                <a
+                  href={child.href}
+                  class={`flex items-center justify-between px-3 py-2 rounded-lg text-sm ${
+                    currentPath === child.href
+                      ? 'bg-bsl-green text-white font-semibold'
+                      : 'text-slate-700 hover:bg-emerald-50 hover:text-bsl-green'
+                  }`}
+                >
+                  <span>{child.label}</span>
+                  {child.badge && (
+                    <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800">
+                      {child.badge}
+                    </span>
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+
+      <!-- Mobile Member Login Button -->
+      <div class="pt-4 mt-2 border-t border-slate-100">
+        <a
+          href={companyInfo.memberPortalUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold text-white bg-bsl-green hover:bg-bsl-darkgreen shadow transition-colors"
+        >
+          <Lock class="w-4 h-4 text-bsl-gold" />
+          <span>Member Login Portal</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Clean vanilla toggle logic for mobile menu
+  function setupMobileMenu() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const drawer = document.getElementById('mobile-drawer');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+
+    if (!btn || !drawer) return;
+
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      drawer.classList.toggle('hidden');
+      if (iconOpen && iconClose) {
+        iconOpen.classList.toggle('hidden');
+        iconClose.classList.toggle('hidden');
+      }
+    });
+  }
+
+  // Support Astro View Transitions
+  setupMobileMenu();
+  document.addEventListener('astro:page-load', setupMobileMenu);
+</script>

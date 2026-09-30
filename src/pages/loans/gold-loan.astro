@@ -1,0 +1,157 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import rates from '../../data/rates.json';
+import companyInfo from '../../data/companyInfo.json';
+import {
+  Coins,
+  ShieldCheck,
+  CheckCircle2,
+  FileText,
+  HelpCircle,
+  ArrowRight,
+  Clock,
+  Lock,
+  Award
+} from '@lucide/astro';
+
+const gl = rates.loans.goldLoan;
+---
+
+<PageLayout
+  title="Loan Against Gold | Instant Gold Loans | BSL Nidhi Limited"
+  description="Avail instant Loan Against Gold from BSL Nidhi Limited. Minimal paperwork, attractive interest rates from 12.00% p.a., safe vault custody, and zero pre-payment penalties."
+>
+  <!-- Header Banner -->
+  <section class="bg-gradient-to-b from-amber-950 via-slate-900 to-bsl-navy text-white py-14 px-4 sm:px-6 lg:px-8 border-b border-amber-900/60">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-900/80 text-amber-200 border border-amber-700">
+          <Coins class="w-3.5 h-3.5 text-bsl-gold" />
+          Instant Gold Disbursal
+        </span>
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-950">
+          Rates {gl.rateDisplay}
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-3 tracking-tight">
+        {gl.title}
+      </h1>
+      <p class="text-amber-100/90 text-base sm:text-lg max-w-3xl leading-relaxed">
+        {gl.shortDescription}
+      </p>
+
+      <div class="flex flex-wrap items-center gap-6 mt-6 pt-4 border-t border-amber-900/60 text-xs sm:text-sm text-amber-200">
+        <div>Starting Interest: <strong class="text-white">{gl.rateDisplay}</strong></div>
+        <span>•</span>
+        <div>Maximum LTV: <strong class="text-white">{gl.maxLtv}</strong></div>
+        <span>•</span>
+        <div>Processing Time: <strong class="text-white">{gl.processingTime}</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      
+      <!-- Left Content (8 Cols) -->
+      <div class="lg:col-span-8 space-y-10">
+        
+        <!-- Key Highlights -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+          <h2 class="text-2xl font-bold text-bsl-navy flex items-center gap-2">
+            <Coins class="w-6 h-6 text-bsl-gold" />
+            Why Choose BSL Gold Loan?
+          </h2>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Facing an urgent medical emergency, seasonal business requirement, or personal cash flow requirement? BSL Nidhi Limited offers a fast, transparent, and completely secure experience to avail gold loans in India.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            {gl.highlights.map((highlight) => (
+              <div class="flex items-start gap-3 text-sm text-slate-700">
+                <CheckCircle2 class="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                <span>{highlight}</span>
+              </div>
+            ))}
+            <div class="flex items-start gap-3 text-sm text-slate-700">
+              <CheckCircle2 class="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+              <span>Loans available from ₹5,000 up to ₹2,00,000 under Nidhi lending norms.</span>
+            </div>
+            <div class="flex items-start gap-3 text-sm text-slate-700">
+              <CheckCircle2 class="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+              <span>Purity assessment performed transparently in the presence of the member.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Safe Custody Security Guarantee -->
+        <section class="rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-amber-50 to-white border border-amber-200/80 shadow-sm space-y-3">
+          <div class="flex items-center gap-2 text-amber-900 font-bold text-lg">
+            <Lock class="w-5 h-5 text-amber-700" />
+            <span>Bank-Grade Safe Vault Custody</span>
+          </div>
+          <p class="text-sm text-slate-700 leading-relaxed">
+            Your pledged gold ornaments are weighed, photographed, and sealed in tamper-evident packets in your presence before being placed into bank-grade high-security safe vaults equipped with round-the-clock physical surveillance and comprehensive insurance coverage.
+          </p>
+        </section>
+
+        <!-- Terms of Loan -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+          <h3 class="text-xl font-bold text-bsl-navy flex items-center gap-2">
+            <FileText class="w-5 h-5 text-bsl-green" />
+            Terms & Eligibility Criteria
+          </h3>
+          <ul class="space-y-2 text-sm text-slate-600 list-disc pl-5">
+            <li>Membership in BSL Nidhi Limited is mandatory to avail loan schemes under Nidhi Rules, 2014.</li>
+            <li>Complete KYC documentation (Aadhaar Card, PAN Card, Passport photographs) is required.</li>
+            <li>Evaluation and purity assessment of gold ornaments are performed securely at our branch.</li>
+            <li>Subject to provisions of Nidhi Rules, 2014 as amended from time to time.</li>
+            <li>No hidden processing charges or pre-closure penalties.</li>
+          </ul>
+        </section>
+
+      </div>
+
+      <!-- Right Sidebar (4 Cols) -->
+      <div class="lg:col-span-4 space-y-6">
+        <div class="bg-gradient-to-br from-amber-900 to-slate-950 text-white rounded-2xl p-6 shadow-md border border-amber-800 space-y-4">
+          <h3 class="text-lg font-bold text-white">Apply for Gold Loan</h3>
+          <p class="text-xs text-amber-100 leading-relaxed">
+            Visit our branch with your gold ornaments and KYC documents for immediate 30-minute evaluation and disbursal.
+          </p>
+          <div class="pt-2 space-y-3">
+            <a
+              href="/contact"
+              class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm text-slate-950 bg-amber-400 hover:bg-amber-300 transition-colors shadow"
+            >
+              <span>Submit Gold Loan Inquiry</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+            <a
+              href={`tel:${companyInfo.phoneRaw}`}
+              class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl font-semibold text-xs text-amber-200 bg-amber-950/70 hover:bg-amber-900 border border-amber-700/60 transition-colors"
+            >
+              <span>Call Helpline: {companyInfo.phone}</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 space-y-3 shadow-sm">
+          <h4 class="font-bold text-sm text-slate-900 flex items-center gap-2">
+            <HelpCircle class="w-4 h-4 text-bsl-green" />
+            Gold Loan FAQs
+          </h4>
+          <p class="text-xs text-slate-500">
+            Learn more about loan-to-value calculations, interest payment schedules, and release of ornaments.
+          </p>
+          <a href="/faqs" class="inline-flex items-center gap-1 text-xs font-bold text-bsl-green hover:underline">
+            <span>View All FAQs</span>
+            <ArrowRight class="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</PageLayout>

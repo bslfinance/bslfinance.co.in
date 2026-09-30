@@ -1,0 +1,393 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SchemeCard from '../components/ui/SchemeCard.astro';
+import rates from '../data/rates.json';
+import companyInfo from '../data/companyInfo.json';
+import {
+  ShieldCheck,
+  TrendingUp,
+  Coins,
+  Building2,
+  Lock,
+  ArrowRight,
+  Sparkles,
+  Award,
+  Phone,
+  CheckCircle,
+  FileCheck
+} from '@lucide/astro';
+
+// Calculate the highest available deposit rate dynamically from rates.json
+const highestFdRate = rates.fixedDeposit.slabs
+  .filter(s => s.enabled)
+  .reduce((max, s) => s.rate > max ? s.rate : max, 0);
+
+const goldLoanStartingRate = rates.loans.goldLoan.startingRate;
+---
+
+<PageLayout
+  title="BSL Nidhi Limited | Trusted Deposit Schemes & Loans in India"
+  description="BSL Nidhi Limited is a trusted mutual benefit financial institution offering Fixed Deposits up to 12.00% p.a., Recurring Deposits, and Instant Gold Loans."
+>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-b from-bsl-darkgreen via-emerald-950 to-bsl-navy text-white pt-16 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <!-- Subtle background geometric glow -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <div class="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-emerald-400 blur-3xl"></div>
+      <div class="absolute top-1/2 -left-40 w-96 h-96 rounded-full bg-bsl-gold blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Content (7 Cols) -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          
+          <!-- Trust Pill -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-900/80 text-emerald-200 border border-emerald-700/60 shadow-inner">
+            <ShieldCheck class="w-4 h-4 text-bsl-gold" />
+            <span>Trusted Mutual Benefit Financial Institution</span>
+          </div>
+
+          <!-- Main Title -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            Cultivating Thrift. <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-emerald-100 to-amber-200">
+              Securing Member Futures.
+            </span>
+          </h1>
+
+          <p class="text-emerald-100/90 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            BSL Nidhi Limited offers disciplined savings schemes with competitive quarterly compounded returns and prompt, secure credit solutions tailored exclusively for enrolled members.
+          </p>
+
+          <!-- Key Rate Highlights Pills -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+            <div class="px-4 py-2 rounded-xl bg-white/10 backdrop-blur border border-white/15 text-xs sm:text-sm font-semibold flex items-center gap-2">
+              <TrendingUp class="w-4 h-4 text-bsl-gold" />
+              <span>Fixed Deposits up to <strong class="text-white text-base">{highestFdRate.toFixed(2)}% p.a.</strong></span>
+            </div>
+            <div class="px-4 py-2 rounded-xl bg-white/10 backdrop-blur border border-white/15 text-xs sm:text-sm font-semibold flex items-center gap-2">
+              <Coins class="w-4 h-4 text-amber-300" />
+              <span>Gold Loans from <strong class="text-white text-base">{goldLoanStartingRate.toFixed(2)}% p.a.</strong></span>
+            </div>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+            <a
+              href="/schemes/fixed-deposit"
+              class="px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base text-bsl-darkgreen bg-white hover:bg-emerald-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+            >
+              Explore Deposit Schemes
+            </a>
+            <a
+              href="/loans/gold-loan"
+              class="px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base text-white bg-emerald-800/80 hover:bg-emerald-800 transition-all border border-emerald-600/60 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+            >
+              Instant Gold Loans
+            </a>
+            <a
+              href={companyInfo.memberPortalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base text-bsl-gold bg-slate-900/90 hover:bg-slate-900 transition-all border border-amber-500/40 shadow-lg hover:shadow-xl hover:-translate-y-0.5 inline-flex items-center gap-2"
+            >
+              <Lock class="w-4 h-4" />
+              <span>Member Login</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right Hero: Quick Highlights Card (5 Cols) -->
+        <div class="lg:col-span-5">
+          <div class="glass-panel-dark rounded-3xl p-6 sm:p-8 border border-white/15 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-4 border-b border-white/10">
+              <span class="text-xs uppercase font-extrabold tracking-wider text-bsl-gold">
+                BSL Member Trust
+              </span>
+              <span class="text-xs font-medium text-emerald-300">
+                Mutual Benefit Society
+              </span>
+            </div>
+
+            <div class="space-y-4 my-6">
+              <div class="flex items-start gap-3 text-sm">
+                <CheckCircle class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                <div>
+                  <h4 class="font-bold text-white">Statutory Regulatory Compliance</h4>
+                  <p class="text-xs text-emerald-200/80">Governed under Section 406 of the Companies Act, 2013 and Nidhi Rules, 2014.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 text-sm">
+                <CheckCircle class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                <div>
+                  <h4 class="font-bold text-white">Guaranteed Safe Custody</h4>
+                  <p class="text-xs text-emerald-200/80">Ornaments and deposit certificates maintained in bank-grade safe vaults.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 text-sm">
+                <CheckCircle class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                <div>
+                  <h4 class="font-bold text-white">Ethical & Transparent Returns</h4>
+                  <p class="text-xs text-emerald-200/80">Quarterly compounding and prompt monthly income credits straight to savings accounts.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Member Action Box -->
+            <div class="bg-white/10 rounded-2xl p-4 border border-white/10 text-center">
+              <p class="text-xs text-emerald-100 mb-3">Already a registered shareholder member?</p>
+              <a
+                href={companyInfo.memberPortalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl font-bold text-sm bg-gradient-to-r from-amber-400 to-bsl-gold text-slate-950 hover:brightness-105 transition-all shadow"
+              >
+                <Lock class="w-4 h-4 text-slate-950" />
+                <span>Access Member Account Online</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Institutional Trust Strip -->
+  <section class="bg-white border-y border-slate-200 py-6 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-bsl-green flex items-center justify-center shrink-0">
+          <Award class="w-6 h-6" />
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-slate-900">Certified & Trusted Financial Institution</h4>
+          <p class="text-xs text-slate-500">Committed to ethical, transparent, and legally tenable financial services.</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a
+          href="/about/legal"
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-bsl-green bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-colors"
+        >
+          <FileCheck class="w-4 h-4" />
+          <span>View Legal Certifications</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Featured Deposit Schemes Section -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-12 space-y-2">
+      <span class="text-xs uppercase font-extrabold tracking-wider text-bsl-green bg-emerald-100 px-3 py-1 rounded-full">
+        Deposit Products
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-bsl-navy tracking-tight">
+        Disciplined Savings with Superior Returns
+      </h2>
+      <p class="text-sm sm:text-base text-slate-600">
+        Choose from our tailored deposit schemes structured for regular growth, senior citizen security, and monthly cash flow.
+      </p>
+    </div>
+
+    <!-- Deposit Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Fixed Deposit -->
+      <SchemeCard
+        title={rates.fixedDeposit.title}
+        rateBadge={`Up to ${highestFdRate.toFixed(2)}% p.a.`}
+        description={rates.fixedDeposit.shortDescription}
+        highlights={rates.fixedDeposit.highlights}
+        href="/schemes/fixed-deposit"
+        category="deposit"
+        badgeText="Highest Return"
+      />
+
+      <!-- Recurring Deposit -->
+      <SchemeCard
+        title={rates.recurringDeposit.title}
+        rateBadge="Up to 10.50% p.a."
+        description={rates.recurringDeposit.shortDescription}
+        highlights={rates.recurringDeposit.highlights}
+        href="/schemes/recurring-deposit"
+        category="deposit"
+        badgeText="Disciplined Thrift"
+      />
+
+      <!-- Monthly Income Scheme -->
+      <SchemeCard
+        title={rates.monthlyIncomeScheme.title}
+        rateBadge="Up to 11.00% p.a."
+        description={rates.monthlyIncomeScheme.shortDescription}
+        highlights={rates.monthlyIncomeScheme.highlights}
+        href="/schemes/monthly-income"
+        category="deposit"
+        badgeText="Monthly Payout"
+      />
+
+      <!-- Daily Deposit Scheme -->
+      <SchemeCard
+        title={rates.dailyDepositScheme.title}
+        rateBadge="Up to 7.25% p.a."
+        description={rates.dailyDepositScheme.shortDescription}
+        highlights={rates.dailyDepositScheme.highlights}
+        href="/schemes/daily-deposit"
+        category="deposit"
+        badgeText="Doorstep Service"
+      />
+
+    </div>
+  </section>
+
+  <!-- Loan Products Section -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-slate-100/70 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-2">
+        <span class="text-xs uppercase font-extrabold tracking-wider text-amber-800 bg-amber-100 px-3 py-1 rounded-full">
+          Loan Schemes
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-bsl-navy tracking-tight">
+          Prompt Financial Credit for Members
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600">
+          Transparent, low-documentation lending solutions secured against gold, deposits, and real estate assets.
+        </p>
+      </div>
+
+      <!-- Loan Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Gold Loan -->
+        <SchemeCard
+          title={rates.loans.goldLoan.title}
+          rateBadge={rates.loans.goldLoan.rateDisplay}
+          description={rates.loans.goldLoan.shortDescription}
+          highlights={rates.loans.goldLoan.highlights}
+          href="/loans/gold-loan"
+          category="loan"
+          badgeText="Instant Disbursal"
+        />
+
+        <!-- Loan Against Deposit -->
+        <SchemeCard
+          title={rates.loans.loanAgainstDeposit.title}
+          rateBadge={rates.loans.loanAgainstDeposit.rateDisplay}
+          description={rates.loans.loanAgainstDeposit.shortDescription}
+          highlights={rates.loans.loanAgainstDeposit.highlights}
+          href="/loans/loan-against-deposit"
+          category="loan"
+          badgeText="Up to 90% of Value"
+        />
+
+        <!-- Loan Against Property -->
+        <SchemeCard
+          title={rates.loans.loanAgainstProperty.title}
+          rateBadge={rates.loans.loanAgainstProperty.rateDisplay}
+          description={rates.loans.loanAgainstProperty.shortDescription}
+          highlights={rates.loans.loanAgainstProperty.highlights}
+          href="/loans/loan-against-property"
+          category="loan"
+          badgeText="Business & Growth"
+        />
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose BSL Nidhi (Trust Pillars) -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="bg-gradient-to-br from-bsl-navy to-slate-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl">
+      <div class="max-w-3xl mb-10 space-y-2">
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-white">
+          Why Choose BSL Nidhi Limited?
+        </h3>
+        <p class="text-slate-300 text-sm sm:text-base">
+          Built on four timeless pillars: integrity, relationship, diligence, and adaptability.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-bsl-green flex items-center justify-center text-white font-bold">
+            01
+          </div>
+          <h4 class="font-bold text-white text-base">Statutory Governance</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Incorporated under Companies Act, 2013 and regular statutory audits under Nidhi Rules 2014.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-bsl-green flex items-center justify-center text-white font-bold">
+            02
+          </div>
+          <h4 class="font-bold text-white text-base">Superior Interest Yields</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Earn higher compounded deposit interest compared to traditional commercial banking channels.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-bsl-green flex items-center justify-center text-white font-bold">
+            03
+          </div>
+          <h4 class="font-bold text-white text-base">High-Security Vaults</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Bank-grade safe custody for pledged gold ornaments with full physical inspection protocols.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-bsl-green flex items-center justify-center text-white font-bold">
+            04
+          </div>
+          <h4 class="font-bold text-white text-base">Dedicated Service</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Doorstep agent collection for DDS, instant transaction receipts, and friendly member support.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Direct Inquiries / Branch Assistance Banner -->
+  <section class="pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="rounded-3xl border border-emerald-200 bg-gradient-to-r from-emerald-50 via-white to-amber-50/40 p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+      <div class="space-y-2 text-center md:text-left">
+        <h3 class="text-2xl font-extrabold text-bsl-navy">
+          Have Questions About Our Deposit Schemes or Gold Loans?
+        </h3>
+        <p class="text-sm text-slate-600">
+          Our branch executives are available Monday to Saturday (10:00 AM – 6:00 PM) to assist you.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3 shrink-0">
+        <a
+          href={`tel:${companyInfo.phoneRaw}`}
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm text-white bg-bsl-green hover:bg-bsl-darkgreen transition-all shadow"
+        >
+          <Phone class="w-4 h-4 text-bsl-gold" />
+          <span>Call {companyInfo.phone}</span>
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 transition-all shadow-sm"
+        >
+          <span>Submit Inquiry Form</span>
+          <ArrowRight class="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,118 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import companyInfo from '../../data/companyInfo.json';
+import { ShieldCheck, Printer, FileText, ArrowRight } from '@lucide/astro';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  documentNumber?: string;
+  effectiveDate?: string;
+  currentSlug: string;
+}
+
+const {
+  title,
+  subtitle = "Official Statutory Document of BSL Nidhi Limited",
+  effectiveDate = "Updated under Nidhi Rules, 2014",
+  currentSlug
+} = Astro.props;
+
+const legalLinks = [
+  { label: "Company Profile & Ethos", href: "/about/company-profile", slug: "company-profile" },
+  { label: "Legal & Certifications", href: "/about/legal", slug: "legal" },
+  { label: "Terms & Conditions of Deposit", href: "/terms-and-conditions", slug: "terms-and-conditions" },
+  { label: "Privacy Policy", href: "/privacy-policy", slug: "privacy-policy" },
+  { label: "Website Usage Terms", href: "/website-terms", slug: "website-terms" },
+];
+---
+
+<PageLayout title={`${title} | BSL Nidhi Limited`} description={`${title} - Official policy document of BSL Nidhi Limited`}>
+  <!-- Header Banner -->
+  <section class="bg-gradient-to-b from-bsl-darkgreen to-emerald-950 text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-emerald-800/60">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-900/80 text-emerald-200 border border-emerald-700/60">
+          <ShieldCheck class="w-3.5 h-3.5 text-bsl-gold" />
+          Statutory Compliance
+        </span>
+
+        <button
+          type="button"
+          onclick="window.print()"
+          class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/10 hover:bg-white/20 text-white transition-colors border border-white/20 cursor-pointer"
+          title="Print Document"
+        >
+          <Printer class="w-3.5 h-3.5" />
+          <span>Print Document</span>
+        </button>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2">
+        {title}
+      </h1>
+      <p class="text-emerald-200/90 text-sm sm:text-base max-w-3xl">
+        {subtitle}
+      </p>
+
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-6 pt-4 border-t border-emerald-900/60 text-xs text-emerald-300">
+        <span>Entity: <strong class="text-white">BSL Nidhi Limited</strong></span>
+        <span>•</span>
+        <span>Status: <strong class="text-white">{effectiveDate}</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Document Content Body with Sidebar Navigation -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      
+      <!-- Main Content (Span 3) -->
+      <div class="lg:col-span-3">
+        <article class="bg-white rounded-2xl p-6 sm:p-10 shadow-sm border border-slate-200/80 leading-relaxed text-slate-800">
+          <slot />
+        </article>
+      </div>
+
+      <!-- Sidebar: Other Legal Links (Span 1) -->
+      <aside class="space-y-6">
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
+            <FileText class="w-4 h-4 text-bsl-green" />
+            <span>Compliance Documents</span>
+          </h3>
+          <nav class="space-y-1">
+            {legalLinks.map((link) => {
+              const isActive = currentSlug === link.slug;
+              return (
+                <a
+                  href={link.href}
+                  class={`flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                    isActive
+                      ? 'bg-bsl-green text-white shadow-sm'
+                      : 'text-slate-600 hover:bg-emerald-50 hover:text-bsl-green'
+                  }`}
+                >
+                  <span>{link.label}</span>
+                  <ArrowRight class={`w-3.5 h-3.5 ${isActive ? 'text-white' : 'text-slate-400'}`} />
+                </a>
+              );
+            })}
+          </nav>
+        </div>
+
+        <!-- Trust Box -->
+        <div class="bg-emerald-900 text-white rounded-2xl p-5 border border-emerald-800 text-xs space-y-2">
+          <div class="flex items-center gap-2 text-bsl-gold font-bold">
+            <ShieldCheck class="w-4 h-4" />
+            <span>Statutory Governance</span>
+          </div>
+          <p class="text-emerald-100/90 leading-relaxed">
+            All operations and policies of BSL Nidhi Limited are governed by the statutory provisions of the Companies Act, 2013 and applicable rules.
+          </p>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</PageLayout>

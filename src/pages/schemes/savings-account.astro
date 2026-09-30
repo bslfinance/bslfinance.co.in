@@ -1,0 +1,187 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import rates from '../../data/rates.json';
+import companyInfo from '../../data/companyInfo.json';
+import {
+  TrendingUp,
+  ShieldCheck,
+  CheckCircle2,
+  FileText,
+  HelpCircle,
+  ArrowRight,
+  CreditCard,
+  Percent
+} from '@lucide/astro';
+
+const sa = rates.savingsAccount;
+const activeCategories = sa.categories.filter(c => c.enabled);
+---
+
+<PageLayout
+  title="Savings Account | Higher Returns up to 5.50% p.a. | BSL Nidhi Limited"
+  description="Open a member Savings Account with BSL Nidhi Limited. Earn higher annual returns up to 5.50% p.a. with low minimum balance and full transaction liquidity."
+>
+  <!-- Header Banner -->
+  <section class="bg-gradient-to-b from-bsl-darkgreen to-emerald-950 text-white py-14 px-4 sm:px-6 lg:px-8 border-b border-emerald-800">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-900/80 text-emerald-200 border border-emerald-700">
+          <ShieldCheck class="w-3.5 h-3.5 text-bsl-gold" />
+          High-Yield Member Savings
+        </span>
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-950">
+          Earn Up to 5.50% p.a.
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-3 tracking-tight">
+        {sa.title}
+      </h1>
+      <p class="text-emerald-100/90 text-base sm:text-lg max-w-3xl leading-relaxed">
+        {sa.shortDescription} Enjoy higher interest returns on your everyday savings compared to conventional commercial banks.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-6 mt-6 pt-4 border-t border-emerald-900/70 text-xs sm:text-sm text-emerald-200">
+        <div>Interest Calculation: <strong class="text-white">Daily Product Basis</strong></div>
+        <span>•</span>
+        <div>Interest Credit: <strong class="text-white">Half-Yearly</strong></div>
+        <span>•</span>
+        <div>Minimum Balance: <strong class="text-white">₹500 / ₹1,000</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      
+      <!-- Left Content (8 Cols) -->
+      <div class="lg:col-span-8 space-y-10">
+        
+        <!-- Rate Chart & Categories -->
+        <section>
+          <h2 class="text-2xl font-bold text-bsl-navy flex items-center gap-2 mb-2">
+            <Percent class="w-6 h-6 text-bsl-green" />
+            Savings Account Categories & Interest Rates
+          </h2>
+          <p class="text-sm text-slate-600 mb-6">
+            Compare account categories and minimum balance requirements designed for all member segments.
+          </p>
+
+          <div class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm bg-white">
+            <div class="bg-gradient-to-r from-bsl-darkgreen via-bsl-green to-emerald-800 px-6 py-4 text-white">
+              <h4 class="font-bold text-base tracking-wide">
+                Account Categories & Rate Slabs
+              </h4>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-sm">
+                <thead class="bg-slate-50 text-slate-700 font-semibold border-b border-slate-200">
+                  <tr>
+                    <th scope="col" class="py-3.5 px-6">Account Category</th>
+                    <th scope="col" class="py-3.5 px-6">Annual Interest Rate</th>
+                    <th scope="col" class="py-3.5 px-6 text-right">Min Balance</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  {activeCategories.map((cat, idx) => (
+                    <tr class={`hover:bg-emerald-50/50 transition-colors ${idx % 2 === 1 ? 'bg-slate-50/30' : ''}`}>
+                      <td class="py-4 px-6 font-bold text-slate-900">
+                        {cat.category}
+                      </td>
+                      <td class="py-4 px-6">
+                        <span class="inline-block font-extrabold text-bsl-green text-base">
+                          {cat.rateDisplay}
+                        </span>
+                      </td>
+                      <td class="py-4 px-6 text-right font-semibold text-slate-700">
+                        ₹{cat.minBalance.toLocaleString('en-IN')}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Key Features -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+          <h3 class="text-xl font-bold text-bsl-navy">Account Privileges & Features</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            {sa.highlights.map((highlight) => (
+              <div class="flex items-start gap-3 text-sm text-slate-700">
+                <CheckCircle2 class="w-5 h-5 text-bsl-green shrink-0 mt-0.5" />
+                <span>{highlight}</span>
+              </div>
+            ))}
+            <div class="flex items-start gap-3 text-sm text-slate-700">
+              <CheckCircle2 class="w-5 h-5 text-bsl-green shrink-0 mt-0.5" />
+              <span>Easy fund transfers to your Fixed or Recurring Deposit accounts.</span>
+            </div>
+            <div class="flex items-start gap-3 text-sm text-slate-700">
+              <CheckCircle2 class="w-5 h-5 text-bsl-green shrink-0 mt-0.5" />
+              <span>Nomination facility available for all single and joint accounts.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Terms of Account -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+          <h3 class="text-xl font-bold text-bsl-navy flex items-center gap-2">
+            <FileText class="w-5 h-5 text-bsl-green" />
+            Account Terms & Important Rules
+          </h3>
+          <ul class="space-y-2 text-sm text-slate-600 list-disc pl-5">
+            <li>Membership in BSL Nidhi Limited and full KYC documentation are mandatory.</li>
+            <li>Interest is calculated on daily product balance and credited half-yearly.</li>
+            <li>In case there are no transactions for continuous 6 months, account is classified as Dormant for security.</li>
+            <li>Nomination facility is available and strongly recommended.</li>
+          </ul>
+        </section>
+
+      </div>
+
+      <!-- Right Sidebar (4 Cols) -->
+      <div class="lg:col-span-4 space-y-6">
+        <div class="bg-gradient-to-br from-bsl-darkgreen to-emerald-950 text-white rounded-2xl p-6 shadow-md border border-emerald-800 space-y-4">
+          <h3 class="text-lg font-bold text-white">Open a Savings Account</h3>
+          <p class="text-xs text-emerald-200 leading-relaxed">
+            Experience superior member banking. Visit our branch or request assistance online.
+          </p>
+          <div class="pt-2 space-y-3">
+            <a
+              href="/contact"
+              class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm text-bsl-darkgreen bg-white hover:bg-emerald-50 transition-colors shadow"
+            >
+              <span>Submit Account Inquiry</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+            <a
+              href={`tel:${companyInfo.phoneRaw}`}
+              class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl font-semibold text-xs text-emerald-100 bg-emerald-900/60 hover:bg-emerald-900 border border-emerald-700/60 transition-colors"
+            >
+              <span>Call Helpline: {companyInfo.phone}</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 space-y-3 shadow-sm">
+          <h4 class="font-bold text-sm text-slate-900 flex items-center gap-2">
+            <HelpCircle class="w-4 h-4 text-bsl-green" />
+            Savings Account FAQs
+          </h4>
+          <p class="text-xs text-slate-500">
+            Learn more about minimum balance maintenance, passbooks, and dormant account reactivation.
+          </p>
+          <a href="/faqs" class="inline-flex items-center gap-1 text-xs font-bold text-bsl-green hover:underline">
+            <span>View All FAQs</span>
+            <ArrowRight class="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</PageLayout>

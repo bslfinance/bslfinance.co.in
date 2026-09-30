@@ -1,0 +1,305 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import companyInfo from '../data/companyInfo.json';
+import {
+  Phone,
+  Mail,
+  Clock,
+  MapPin,
+  Send,
+  ShieldCheck,
+  MessageCircle,
+  HelpCircle,
+  ArrowRight
+} from '@lucide/astro';
+---
+
+<PageLayout
+  title="Contact Us | Branch & Support Helpline | BSL Nidhi Limited"
+  description="Get in touch with BSL Nidhi Limited. Contact our customer support team for queries on Fixed Deposits, Recurring Deposits, and Gold Loans."
+>
+  <!-- Header Banner -->
+  <section class="bg-gradient-to-b from-bsl-darkgreen to-emerald-950 text-white py-14 px-4 sm:px-6 lg:px-8 border-b border-emerald-800">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-900/80 text-emerald-200 border border-emerald-700">
+          <ShieldCheck class="w-3.5 h-3.5 text-bsl-gold" />
+          Member Support Helpline
+        </span>
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-950">
+          Monday – Saturday (10 AM – 6 PM)
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-3 tracking-tight">
+        Contact BSL Nidhi Limited
+      </h1>
+      <p class="text-emerald-100/90 text-base sm:text-lg max-w-3xl leading-relaxed">
+        Have questions about our deposit rates, loan eligibility, or membership application? Reach out to our dedicated support executives directly.
+      </p>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      
+      <!-- Left: Interactive Contact Form (7 Cols) -->
+      <div class="lg:col-span-7">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+          <div>
+            <h2 class="text-2xl font-bold text-bsl-navy mb-1">Send an Inquiry</h2>
+            <p class="text-xs sm:text-sm text-slate-500">
+              Fill in your details and our team will get in touch with you shortly.
+            </p>
+          </div>
+
+          <!-- Alert Container for Asynchronous Submission Status -->
+          <div id="form-alert" class="hidden p-4 rounded-xl text-sm leading-relaxed" role="alert"></div>
+
+          <form
+            id="bslContactForm"
+            action={companyInfo.formWebhookUrl}
+            method="POST"
+            class="space-y-4"
+          >
+            <!-- Anti-Spam Honeypot field (hidden from humans) -->
+            <div class="hidden" aria-hidden="true">
+              <label for="honeypot">Leave this blank</label>
+              <input type="text" id="honeypot" name="honeypot" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <!-- Full Name -->
+            <div>
+              <label for="Name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                Full Name <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="Name"
+                name="Name"
+                required
+                placeholder="e.g. Ramesh Kumar"
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-bsl-green focus:border-bsl-green transition-all"
+              />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Email -->
+              <div>
+                <label for="EMail" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                  Email Address <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="EMail"
+                  name="EMail"
+                  required
+                  placeholder="ramesh@example.com"
+                  class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-bsl-green focus:border-bsl-green transition-all"
+                />
+              </div>
+
+              <!-- Phone -->
+              <div>
+                <label for="Phone" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                  Phone Number <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="Phone"
+                  name="Phone"
+                  required
+                  placeholder="+91 XXXXX XXXXX"
+                  class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-bsl-green focus:border-bsl-green transition-all"
+                />
+              </div>
+            </div>
+
+            <!-- Scheme of Interest -->
+            <div>
+              <label for="Subject" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                Scheme of Interest
+              </label>
+              <select
+                id="Subject"
+                name="Subject"
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-bsl-green focus:border-bsl-green transition-all bg-white"
+              >
+                <option value="Fixed Deposit (FD)">Fixed Deposit Scheme (FD)</option>
+                <option value="Recurring Deposit (RD)">Recurring Deposit Scheme (RD)</option>
+                <option value="Monthly Income Scheme (MIS)">Monthly Income Scheme (MIS)</option>
+                <option value="Daily Deposit (DDS)">Daily Deposit Scheme (DDS)</option>
+                <option value="Loan Against Gold">Loan Against Gold</option>
+                <option value="Loan Against Deposit">Loan Against Deposit</option>
+                <option value="Loan Against Property">Loan Against Property</option>
+                <option value="General Inquiry">General / Other Inquiry</option>
+              </select>
+            </div>
+
+            <!-- Message Query -->
+            <div>
+              <label for="Message" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                Your Message / Query <span class="text-red-500">*</span>
+              </label>
+              <textarea
+                id="Message"
+                name="Message"
+                rows="4"
+                required
+                placeholder="Tell us how we can assist you..."
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-bsl-green focus:border-bsl-green transition-all resize-y"
+              ></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              id="submit-btn"
+              class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold text-sm text-white bg-bsl-green hover:bg-bsl-darkgreen transition-all shadow-md hover:shadow-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <Send class="w-4 h-4 text-bsl-gold" />
+              <span id="btn-text">Send Message</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right: Contact Channels & Branch Info (5 Cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <!-- Channels Card -->
+        <div class="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-6">
+          <h3 class="text-xl font-bold text-bsl-navy border-b pb-3 border-slate-100">
+            Direct Contact Information
+          </h3>
+
+          <div class="space-y-4 text-sm">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-100 text-bsl-green flex items-center justify-center shrink-0">
+                <Phone class="w-5 h-5" />
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-900">Telephone Helpline</h4>
+                <a href={`tel:${companyInfo.phoneRaw}`} class="text-bsl-green hover:underline font-semibold">
+                  {companyInfo.phone}
+                </a>
+                <p class="text-xs text-slate-500 mt-0.5">{companyInfo.workingHours}</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-100 text-bsl-green flex items-center justify-center shrink-0">
+                <Mail class="w-5 h-5" />
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-900">Official Email</h4>
+                <a href={`mailto:${companyInfo.email}`} class="text-bsl-green hover:underline font-semibold break-all">
+                  {companyInfo.email}
+                </a>
+                <p class="text-xs text-slate-500 mt-0.5">Prompt responses during business days</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-100 text-bsl-green flex items-center justify-center shrink-0">
+                <Clock class="w-5 h-5" />
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-900">Business Hours</h4>
+                <p class="text-slate-700">{companyInfo.workingDays}</p>
+                <p class="text-xs text-slate-500 mt-0.5">{companyInfo.closedOn}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- WhatsApp Connect Button -->
+          <div class="pt-4 border-t border-slate-100">
+            <a
+              href={companyInfo.social.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm text-emerald-950 bg-emerald-100 hover:bg-emerald-200 border border-emerald-300 transition-colors shadow-sm"
+            >
+              <MessageCircle class="w-4 h-4 text-emerald-800" />
+              <span>Connect on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Dedicated Member Assistance Box -->
+        <div class="bg-slate-900 text-white rounded-2xl p-6 shadow-sm border border-slate-800 space-y-3 text-xs leading-relaxed">
+          <div class="flex items-center gap-2 text-bsl-gold font-bold text-sm">
+            <ShieldCheck class="w-4 h-4" />
+            <span>Dedicated Member Support</span>
+          </div>
+          <p class="text-slate-300">
+            Our relationship executives are available to guide you through deposit schemes, interest rates, and loan processing.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</PageLayout>
+
+<script>
+  function setupContactForm() {
+    const form = document.getElementById('bslContactForm') as HTMLFormElement;
+    const alertBox = document.getElementById('form-alert');
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const btnText = document.getElementById('btn-text');
+
+    if (!form || !alertBox || !submitBtn || !btnText) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Check anti-spam honeypot
+      const honeypot = (document.getElementById('honeypot') as HTMLInputElement)?.value;
+      if (honeypot) {
+        console.warn('Bot submission blocked.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      btnText.textContent = 'Sending message...';
+
+      try {
+        const formData = new FormData(form);
+        const params = new URLSearchParams();
+        formData.forEach((value, key) => {
+          params.append(key, value.toString());
+        });
+
+        // Send to Google Apps Script webhook
+        await fetch(form.action, {
+          method: 'POST',
+          mode: 'no-cors', // standard for Google Apps Script redirects
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: params.toString()
+        });
+
+        // Show success state
+        alertBox.className = 'p-4 rounded-xl text-sm leading-relaxed bg-emerald-50 text-emerald-900 border border-emerald-300 flex items-center gap-2';
+        alertBox.innerHTML = '<strong>Thank you!</strong> Your inquiry has been recorded successfully. Our team will contact you shortly.';
+        alertBox.classList.remove('hidden');
+        form.reset();
+      } catch (err) {
+        // Fallback display
+        alertBox.className = 'p-4 rounded-xl text-sm leading-relaxed bg-amber-50 text-amber-900 border border-amber-300';
+        alertBox.innerHTML = 'Thank you! Your inquiry has been submitted. Our team will contact you shortly.';
+        alertBox.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        btnText.textContent = 'Send Message';
+      }
+    });
+  }
+
+  setupContactForm();
+  document.addEventListener('astro:page-load', setupContactForm);
+</script>

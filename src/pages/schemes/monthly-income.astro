@@ -1,0 +1,155 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import RateTable from '../../components/ui/RateTable.astro';
+import rates from '../../data/rates.json';
+import companyInfo from '../../data/companyInfo.json';
+import {
+  TrendingUp,
+  ShieldCheck,
+  CheckCircle2,
+  FileText,
+  HelpCircle,
+  ArrowRight,
+  Wallet
+} from '@lucide/astro';
+
+const mis = rates.monthlyIncomeScheme;
+---
+
+<PageLayout
+  title="Monthly Income Scheme (MIS) | BSL Nidhi Limited"
+  description="Generate guaranteed monthly cash flow with BSL Nidhi Limited Monthly Income Scheme (MIS). High yields up to 11.00% p.a. with 100% principal protection."
+>
+  <!-- Header Banner -->
+  <section class="bg-gradient-to-b from-bsl-darkgreen to-emerald-950 text-white py-14 px-4 sm:px-6 lg:px-8 border-b border-emerald-800">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-900/80 text-emerald-200 border border-emerald-700">
+          <ShieldCheck class="w-3.5 h-3.5 text-bsl-gold" />
+          Guaranteed Monthly Cash Flow
+        </span>
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-950">
+          Earn Up to 11.00% p.a.
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-3 tracking-tight">
+        {mis.title}
+      </h1>
+      <p class="text-emerald-100/90 text-base sm:text-lg max-w-3xl leading-relaxed">
+        {mis.shortDescription}
+      </p>
+
+      <div class="flex flex-wrap items-center gap-6 mt-6 pt-4 border-t border-emerald-900/70 text-xs sm:text-sm text-emerald-200">
+        <div>Interest Payout: <strong class="text-white">{mis.payoutFrequency}</strong></div>
+        <span>•</span>
+        <div>Minimum Investment: <strong class="text-white">₹{mis.minAmount.toLocaleString('en-IN')}</strong></div>
+        <span>•</span>
+        <div>Principal Safety: <strong class="text-white">100% Returned at Maturity</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      
+      <!-- Left Content (8 Cols) -->
+      <div class="lg:col-span-8 space-y-10">
+        
+        <!-- Rate Chart -->
+        <section>
+          <h2 class="text-2xl font-bold text-bsl-navy flex items-center gap-2 mb-2">
+            <TrendingUp class="w-6 h-6 text-bsl-green" />
+            Monthly Income Scheme Interest Rate Chart
+          </h2>
+          <p class="text-sm text-slate-600 mb-4">
+            Interest is credited directly into your BSL Savings Account during the last week of every calendar month.
+          </p>
+
+          <RateTable
+            slabs={mis.slabs}
+            caption="MIS Interest Rates (Monthly Payout)"
+            showSeniorCitizenNotice={true}
+          />
+        </section>
+
+        <!-- Benefits -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+          <h3 class="text-xl font-bold text-bsl-navy">Why Choose MIS?</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            {mis.highlights.map((highlight) => (
+              <div class="flex items-start gap-3 text-sm text-slate-700">
+                <CheckCircle2 class="w-5 h-5 text-bsl-green shrink-0 mt-0.5" />
+                <span>{highlight}</span>
+              </div>
+            ))}
+            <div class="flex items-start gap-3 text-sm text-slate-700">
+              <CheckCircle2 class="w-5 h-5 text-bsl-green shrink-0 mt-0.5" />
+              <span>Full principal returned securely at the end of the contracted term.</span>
+            </div>
+            <div class="flex items-start gap-3 text-sm text-slate-700">
+              <CheckCircle2 class="w-5 h-5 text-bsl-green shrink-0 mt-0.5" />
+              <span>Nomination facility available to safeguard family security.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Terms of Account -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+          <h3 class="text-xl font-bold text-bsl-navy flex items-center gap-2">
+            <FileText class="w-5 h-5 text-bsl-green" />
+            Statutory Terms & Guidelines
+          </h3>
+          <ul class="space-y-2 text-sm text-slate-600 list-disc pl-5">
+            <li>Membership and KYC completion in BSL Nidhi Limited are mandatory prior to opening an MIS account.</li>
+            <li>Interest is credited directly into the member's savings account during the last week of each calendar month.</li>
+            <li>The principal deposit is refunded in full at the end of the term.</li>
+            <li>Loan facility is available against active MIS deposit accounts up to 90% of principal.</li>
+          </ul>
+        </section>
+
+      </div>
+
+      <!-- Right Sidebar (4 Cols) -->
+      <div class="lg:col-span-4 space-y-6">
+        <div class="bg-gradient-to-br from-bsl-darkgreen to-emerald-950 text-white rounded-2xl p-6 shadow-md border border-emerald-800 space-y-4">
+          <h3 class="text-lg font-bold text-white">Invest in MIS Today</h3>
+          <p class="text-xs text-emerald-200 leading-relaxed">
+            Create predictable monthly cash flow for retirement or household support.
+          </p>
+          <div class="pt-2 space-y-3">
+            <a
+              href="/contact"
+              class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm text-bsl-darkgreen bg-white hover:bg-emerald-50 transition-colors shadow"
+            >
+              <span>Submit MIS Inquiry</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+            <a
+              href={`tel:${companyInfo.phoneRaw}`}
+              class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl font-semibold text-xs text-emerald-100 bg-emerald-900/60 hover:bg-emerald-900 border border-emerald-700/60 transition-colors"
+            >
+              <span>Call Helpline: {companyInfo.phone}</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 space-y-3 shadow-sm">
+          <h4 class="font-bold text-sm text-slate-900 flex items-center gap-2">
+            <HelpCircle class="w-4 h-4 text-bsl-green" />
+            Monthly Income Scheme FAQs
+          </h4>
+          <p class="text-xs text-slate-500">
+            Learn more about tax treatment, bank account transfers, and pre-closure terms.
+          </p>
+          <a href="/faqs" class="inline-flex items-center gap-1 text-xs font-bold text-bsl-green hover:underline">
+            <span>View All FAQs</span>
+            <ArrowRight class="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</PageLayout>

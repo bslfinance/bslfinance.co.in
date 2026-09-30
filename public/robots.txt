@@ -1,0 +1,7 @@
+# Robots.txt for BSL Nidhi Limited (bslfinance.co.in)
+User-agent: *
+Allow: /
+Disallow: /Documents/*.PDF
+Disallow: /Documents/*.pdf
+
+Sitemap: https://bslfinance.co.in/sitemap.xml

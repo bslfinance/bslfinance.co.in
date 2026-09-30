@@ -1,0 +1,185 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import faqs from '../data/faqs.json';
+import companyInfo from '../data/companyInfo.json';
+import {
+  HelpCircle,
+  ShieldCheck,
+  ChevronDown,
+  Phone,
+  ArrowRight,
+  BookOpen,
+  Printer,
+  FileText
+} from '@lucide/astro';
+
+const categories = Array.from(new Set(faqs.map(f => f.category)));
+---
+
+<PageLayout
+  title="Frequently Asked Questions (FAQ) | BSL Nidhi Limited"
+  description="Find answers to common questions about BSL Nidhi Limited deposit schemes, interest rates, gold loans, KYC requirements, and statutory regulations."
+>
+  <!-- Header Banner (matching LegalDocumentLayout) -->
+  <section class="bg-gradient-to-b from-bsl-darkgreen to-emerald-950 text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-emerald-800/60">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-900/80 text-emerald-200 border border-emerald-700/60">
+          <HelpCircle class="w-3.5 h-3.5 text-bsl-gold" />
+          Knowledge Base & Member Help
+        </span>
+
+        <button
+          type="button"
+          onclick="window.print()"
+          class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/10 hover:bg-white/20 text-white transition-colors border border-white/20 cursor-pointer"
+          title="Print FAQ Document"
+        >
+          <Printer class="w-3.5 h-3.5" />
+          <span>Print Document</span>
+        </button>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2">
+        Frequently Asked Questions
+      </h1>
+      <p class="text-emerald-200/90 text-sm sm:text-base max-w-3xl">
+        Everything you need to know about BSL Nidhi Limited schemes, statutory regulations, member eligibility, and branch services.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-6 pt-4 border-t border-emerald-900/60 text-xs text-emerald-300">
+        <span>Entity: <strong class="text-white">BSL Nidhi Limited</strong></span>
+        <span>•</span>
+        <span>Category: <strong class="text-white">Member FAQ & Help Guide</strong></span>
+        <span>•</span>
+        <span>Status: <strong class="text-white">Updated under Nidhi Rules, 2014</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Document Content Body with Sidebar Navigation (matching Legal page structure) -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      
+      <!-- Main Content Article (Span 3) -->
+      <div class="lg:col-span-3">
+        <article class="bg-white rounded-2xl p-6 sm:p-10 shadow-sm border border-slate-200/80 leading-relaxed text-slate-800 space-y-10">
+          
+          <!-- Introduction -->
+          <div class="border-b border-slate-100 pb-6">
+            <h2 class="text-2xl font-bold text-bsl-navy flex items-center gap-2 mb-3">
+              <BookOpen class="w-6 h-6 text-bsl-green" />
+              Member Inquiry Guide
+            </h2>
+            <p class="text-slate-700 leading-relaxed text-sm sm:text-base">
+              Find authoritative answers to common inquiries regarding BSL Nidhi Limited’s deposit schemes, quarterly interest compounding, KYC documentation, gold loan processing, and statutory compliance under the Nidhi Rules, 2014.
+            </p>
+          </div>
+
+          <!-- FAQ Categories & Questions -->
+          {categories.map((cat) => {
+            const catFaqs = faqs.filter(f => f.category === cat);
+            const catId = cat.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+            return (
+              <section id={catId} class="space-y-4 scroll-mt-24">
+                <div class="flex items-center justify-between border-b pb-3 border-slate-100">
+                  <h3 class="text-xl font-bold text-bsl-navy flex items-center gap-2">
+                    <ShieldCheck class="w-5 h-5 text-bsl-green" />
+                    {cat}
+                  </h3>
+                  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-bsl-green border border-emerald-200">
+                    {catFaqs.length} Questions
+                  </span>
+                </div>
+
+                <div class="space-y-3">
+                  {catFaqs.map((faq) => (
+                    <details class="group rounded-xl border border-slate-200 overflow-hidden bg-slate-50/50 hover:bg-slate-50/80 transition-colors [&_summary::-webkit-details-marker]:hidden">
+                      <summary class="flex items-center justify-between gap-4 p-4 sm:p-5 cursor-pointer select-none font-bold text-slate-900 hover:text-bsl-green transition-colors text-sm sm:text-base">
+                        <span>{faq.question}</span>
+                        <ChevronDown class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0" />
+                      </summary>
+                      <div class="px-4 pb-5 pt-2 sm:px-5 sm:pb-5 text-slate-700 text-sm sm:text-base leading-relaxed border-t border-slate-200/60 bg-white">
+                        <p>{faq.answer}</p>
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              </section>
+            );
+          })}
+
+        </article>
+      </div>
+
+      <!-- Sidebar (Span 1 - matching Legal page) -->
+      <aside class="space-y-6">
+        
+        <!-- Category Jump Navigation -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
+            <FileText class="w-4 h-4 text-bsl-green" />
+            <span>FAQ Categories</span>
+          </h3>
+          <nav class="space-y-1">
+            {categories.map((cat) => {
+              const catId = cat.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+              const count = faqs.filter(f => f.category === cat).length;
+              return (
+                <a
+                  href={`#${catId}`}
+                  class="flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-emerald-50 hover:text-bsl-green transition-all"
+                >
+                  <span>{cat}</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-bold">{count}</span>
+                </a>
+              );
+            })}
+          </nav>
+        </div>
+
+        <!-- Official Support Box -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-3">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+            <Phone class="w-4 h-4 text-bsl-green" />
+            <span>Need More Help?</span>
+          </h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Have a question not addressed here? Our branch relationship executives are ready to assist you.
+          </p>
+          <div class="pt-2 space-y-2">
+            <a
+              href={`tel:${companyInfo.phoneRaw}`}
+              class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl font-bold text-xs bg-amber-400 hover:bg-amber-300 text-slate-950 transition-colors shadow-2xs"
+            >
+              <Phone class="w-3.5 h-3.5" />
+              <span>Call {companyInfo.phone}</span>
+            </a>
+            <a
+              href="/contact"
+              class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl font-semibold text-xs text-white bg-bsl-green hover:bg-bsl-darkgreen transition-colors"
+            >
+              <span>Contact Support</span>
+              <ArrowRight class="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Trust Box (exact copy from LegalDocumentLayout) -->
+        <div class="bg-emerald-900 text-white rounded-2xl p-5 border border-emerald-800 text-xs space-y-2">
+          <div class="flex items-center gap-2 text-bsl-gold font-bold">
+            <ShieldCheck class="w-4 h-4" />
+            <span>Statutory Governance</span>
+          </div>
+          <p class="text-emerald-100/90 leading-relaxed">
+            All operations and policies of BSL Nidhi Limited are governed by the statutory provisions of the Companies Act, 2013 and applicable rules.
+          </p>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+</PageLayout>
+
+
